@@ -76,16 +76,17 @@ function checkActivity() {
 			section.classList.remove("your-active-class")
 		}
 	}
-	const topSections = document.querySelectorAll(".your-active-class");
 	// Compare the list items in the nav bar with the active sections and highlight the nav menu link that matches the last active section
 	const lis = document.querySelectorAll("li");
+	lis[0].classList.add("your-active-class");
+	const topSections = document.querySelectorAll(".your-active-class");
 	for (let item of lis) {
 		if (typeof item != "object") {
 			continue;
-		} else if (item.textContent == topSections[topSections.length-1].getAttribute("data-nav")) {
-			item.classList.add("active-nav")
-		} else {
+		} else if (item.textContent != topSections[topSections.length-1].getAttribute("data-nav")) {
 			item.classList.remove("active-nav")
+		} else {
+			item.classList.add("active-nav")
 		}
 	}
 }
