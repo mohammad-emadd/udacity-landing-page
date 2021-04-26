@@ -33,10 +33,12 @@ const menuLinks = document.querySelectorAll(".menu__link");
 function isSectionInView(element) {
 	// check nearest sections from the top to the bounding client rect
     let bounding = element.getBoundingClientRect();
+    const n = 50;
     return (
-      bounding.top <= 50 &&
-      bounding.bottom <=
-        (window.innerHeight || document.documentElement.clientHeight) &&
+      bounding.top <= n &&
+      bounding.bottom >= n &&
+      // bounding.bottom <=
+      //   (window.innerHeight || document.documentElement.clientHeight) &&
       bounding.right <=
         (window.innerWidth || document.documentElement.clientWidth)
         )
@@ -98,8 +100,6 @@ function checkActivity() {
 */
 
 // Build menu 
-navbar.style.position = "fixed";
-navbar.style.background = "rgba(0,0,0,0.7)";
 window.onload = buildNavBar;
 
 // Scroll to section on link click
